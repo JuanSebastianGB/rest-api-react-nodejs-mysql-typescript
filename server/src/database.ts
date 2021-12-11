@@ -1,5 +1,25 @@
 import mysql from "mysql2";
 import config from './config'
+
+/*Sequelize*/
+
+const Sequelize = require('sequelize');
+const VideoModel = require('./routes/Video');
+const sequelize = new Sequelize(config.MYSQL_DATABASE, config.MYSQL_USER, config.MYSQL_PASSWORD, {
+    host: config.MYSQL_HOST,
+    dialect: 'mysql'
+});
+const Video = VideoModel(sequelize, Sequelize);
+sequelize.sync({ force: false })
+    .then(() => {
+        console.log("Table online");
+    });
+module.exports = {
+    Video
+};
+
+/*Without orm*/
+
 const con = mysql.createConnection({
     host: config.MYSQL_HOST,
     user: config.MYSQL_USER,
