@@ -4,14 +4,15 @@ import * as userController from './controllers/users.controller';
 const { check } = require('express-validator');
 
 
-router.post('/users', [
+router.post('/', [
     check('username', 'Username is mandatory!!!').not().isEmpty(),
     check('password', 'password is mandatory!!!').not().isEmpty(),
     check('email', 'Email must be right!!!').isEmail()
 ], userController.createUser);
-router.get('/users', userController.getUsers);
-router.get('/users/:id', userController.getUser);
-router.put('/users/:id', userController.updateUser);
-router.delete('/users/:id', userController.deleteUser);
+router.get('/', userController.getUsers);
+router.get('/:id', userController.getUser);
+router.put('/:id', userController.updateUser);
+router.delete('/:id', userController.deleteUser);
 
+router.post('/login', userController.login);
 export default router;

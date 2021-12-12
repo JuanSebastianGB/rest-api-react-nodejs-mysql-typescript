@@ -11,6 +11,15 @@ Content-Type: application/json
 }
 ###
 GET {{url}}/users HTTP/1.1
-
+user-token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEsImNyZWF0ZWRBdCI6MTYzOTI4Mzc3OCwiZXhwaXJlZEF0IjoxNjM5Mjg0MDc4fQ.kc_fBnGiZwsaDyzdM-IHlIVSx4ml7aNCsl3DwPc62Cw"
 ###
 GET {{url}}/users/2 HTTP/1.1
+
+###
+POST {{url}}/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "jsebastiangb.12@gmail.com",
+    "password": "sebastian"
+}
