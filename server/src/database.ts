@@ -4,18 +4,22 @@ import config from './config'
 /*Sequelize*/
 
 const Sequelize = require('sequelize');
-const VideoModel = require('./routes/Video');
+const VideoModel = require('./routes/models/Video');
+const UserModel = require('./routes/models/User');
+
 const sequelize = new Sequelize(config.MYSQL_DATABASE, config.MYSQL_USER, config.MYSQL_PASSWORD, {
     host: config.MYSQL_HOST,
     dialect: 'mysql'
 });
 const Video = VideoModel(sequelize, Sequelize);
+const User = UserModel(sequelize, Sequelize);
 sequelize.sync({ force: false })
     .then(() => {
         console.log("Table online");
     });
 module.exports = {
-    Video
+    Video,
+    User
 };
 
 /*Without orm*/

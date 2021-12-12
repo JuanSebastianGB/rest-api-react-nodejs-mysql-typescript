@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-const { Video } = require('../database');
+const { Video } = require('../../database');
 
 export const createVideo: RequestHandler = async (req, res) => {
     const video = await Video.create(req.body);
